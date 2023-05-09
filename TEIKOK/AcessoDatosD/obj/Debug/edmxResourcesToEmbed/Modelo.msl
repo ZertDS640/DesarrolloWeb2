@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EJEMPLO1ModelStoreContainer" CdmEntityContainer="EJEMPLO1Entities">
+    <EntitySetMapping Name="CLIENTES">
+      <EntityTypeMapping TypeName="EJEMPLO1Model.CLIENTES">
+        <MappingFragment StoreEntitySet="CLIENTES">
+          <ScalarProperty Name="Cl" ColumnName="Cl" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ACCESO_DATOS">
+      <EntityTypeMapping TypeName="EJEMPLO1Model.ACCESO_DATOS">
+        <MappingFragment StoreEntitySet="ACCESO_DATOS">
+          <ScalarProperty Name="IDAccesoDatos" ColumnName="IDAccesoDatos" />
+          <ScalarProperty Name="Cl" ColumnName="Cl" />
+          <ScalarProperty Name="CodigoUsuario" ColumnName="CodigoUsuario" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
