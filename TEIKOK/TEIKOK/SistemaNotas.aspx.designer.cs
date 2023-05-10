@@ -24,6 +24,15 @@ namespace TEIKOK
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// Control PlnNotas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PlnNotas;
+
+        /// <summary>
         /// Control TituloITQ.
         /// </summary>
         /// <remarks>
@@ -78,6 +87,15 @@ namespace TEIKOK
         protected global::System.Web.UI.WebControls.TextBox Ex1;
 
         /// <summary>
+        /// Control ResultadoP1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ResultadoP1;
+
+        /// <summary>
         /// Control P2.
         /// </summary>
         /// <remarks>
@@ -121,6 +139,15 @@ namespace TEIKOK
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Ex2;
+
+        /// <summary>
+        /// Control ResultadoP2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ResultadoP2;
 
         /// <summary>
         /// Control P3.
@@ -168,6 +195,15 @@ namespace TEIKOK
         protected global::System.Web.UI.WebControls.TextBox Ex3;
 
         /// <summary>
+        /// Control ResultadoP3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ResultadoP3;
+
+        /// <summary>
         /// Control Calcular.
         /// </summary>
         /// <remarks>
@@ -193,5 +229,41 @@ namespace TEIKOK
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Error;
+
+        /// <summary>
+        /// Control BtnOC.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnOC;
+
+        /// <summary>
+        /// Control PlnMeses.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PlnMeses;
+
+        /// <summary>
+        /// Control ddlMeses.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlMeses;
+
+        /// <summary>
+        /// Control txtMes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMes;
     }
 }
