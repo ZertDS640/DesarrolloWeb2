@@ -25,5 +25,29 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_insertar_clientes" FunctionName="EJEMPLO1Model.Store.sp_insertar_clientes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EJEMPLO1Model.sp_insertar_clientes_Result">
+          <ScalarProperty Name="Respuesta" ColumnName="Respuesta" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="PRODUCTO">
+      <EntityTypeMapping TypeName="EJEMPLO1Model.PRODUCTO">
+        <MappingFragment StoreEntitySet="PRODUCTO">
+          <ScalarProperty Name="CodigoProducto" ColumnName="CodigoProducto" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_inserta_productos" FunctionName="EJEMPLO1Model.Store.sp_inserta_productos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EJEMPLO1Model.sp_inserta_productos_Result">
+          <ScalarProperty Name="Respuesta" ColumnName="Respuesta" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

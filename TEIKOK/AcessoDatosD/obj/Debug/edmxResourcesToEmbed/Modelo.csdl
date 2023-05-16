@@ -43,5 +43,34 @@
       <End Role="CLIENTES" EntitySet="CLIENTES" />
       <End Role="ACCESO_DATOS" EntitySet="ACCESO_DATOS" />
     </AssociationSet>
+    <FunctionImport Name="sp_insertar_clientes" ReturnType="Collection(EJEMPLO1Model.sp_insertar_clientes_Result)">
+      <Parameter Name="strCedula" Mode="In" Type="String" />
+      <Parameter Name="strNombre" Mode="In" Type="String" />
+      <Parameter Name="strApellido" Mode="In" Type="String" />
+      <Parameter Name="strTelefono" Mode="In" Type="String" />
+      <Parameter Name="strDireccion" Mode="In" Type="String" />
+      <Parameter Name="strEmail" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="PRODUCTO" EntityType="EJEMPLO1Model.PRODUCTO" />
+    <FunctionImport Name="sp_inserta_productos" ReturnType="Collection(EJEMPLO1Model.sp_inserta_productos_Result)">
+      <Parameter Name="strNombreProducto" Mode="In" Type="String" />
+      <Parameter Name="decPrecio" Mode="In" Type="Decimal" />
+      <Parameter Name="intCategoria" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
+  <ComplexType Name="sp_insertar_clientes_Result">
+    <Property Type="Boolean" Name="Respuesta" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="PRODUCTO">
+    <Key>
+      <PropertyRef Name="CodigoProducto" />
+    </Key>
+    <Property Name="NombreProducto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Categoria" Type="Int32" />
+    <Property Name="CodigoProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <ComplexType Name="sp_inserta_productos_Result">
+    <Property Type="Boolean" Name="Respuesta" Nullable="true" />
+  </ComplexType>
 </Schema>

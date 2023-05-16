@@ -22,6 +22,15 @@
     <Property Name="Direccion" Type="varchar(max)" />
     <Property Name="Correo" Type="nvarchar" MaxLength="200" />
   </EntityType>
+  <EntityType Name="PRODUCTO">
+    <Key>
+      <PropertyRef Name="CodigoProducto" />
+    </Key>
+    <Property Name="NombreProducto" Type="varchar" MaxLength="200" />
+    <Property Name="Precio" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Categoria" Type="int" />
+    <Property Name="CodigoProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
   <Association Name="FK_AccesoDatos_CLIENTES">
     <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="0..1" />
     <End Role="ACCESO_DATOS" Type="Self.ACCESO_DATOS" Multiplicity="*" />
@@ -34,9 +43,23 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="sp_inserta_productos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="strNombreProducto" Type="varchar" Mode="In" />
+    <Parameter Name="decPrecio" Type="decimal" Mode="In" />
+    <Parameter Name="intCategoria" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_insertar_clientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="strCedula" Type="varchar" Mode="In" />
+    <Parameter Name="strNombre" Type="varchar" Mode="In" />
+    <Parameter Name="strApellido" Type="varchar" Mode="In" />
+    <Parameter Name="strTelefono" Type="varchar" Mode="In" />
+    <Parameter Name="strDireccion" Type="varchar" Mode="In" />
+    <Parameter Name="strEmail" Type="nvarchar" Mode="In" />
+  </Function>
   <EntityContainer Name="EJEMPLO1ModelStoreContainer">
     <EntitySet Name="ACCESO_DATOS" EntityType="Self.ACCESO_DATOS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CLIENTES" EntityType="Self.CLIENTES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_AccesoDatos_CLIENTES" Association="Self.FK_AccesoDatos_CLIENTES">
       <End Role="CLIENTES" EntitySet="CLIENTES" />
       <End Role="ACCESO_DATOS" EntitySet="ACCESO_DATOS" />
