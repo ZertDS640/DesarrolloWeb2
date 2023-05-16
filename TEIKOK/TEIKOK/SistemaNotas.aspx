@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SistemaNotas.aspx.cs" Inherits="TEIKOK.SistemaNotas" %>
+﻿  <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SistemaNotas.aspx.cs" Inherits="TEIKOK.SistemaNotas" %>
 
 <!DOCTYPE html>
 
@@ -49,7 +49,7 @@
         &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  
     <asp:TextBox ID="Ex2" runat="server" BorderColor="#3399FF" OnTextChanged="E2"></asp:TextBox>
         <br />
-            <asp:Label ID="ResultadoP2" runat="server" Text="" ></asp:Label>
+            <asp:Label ID="ResultadoP2" runat="server" Text="" Visible ="false"></asp:Label>
         <br />
         <br />
         <asp:Label ID="P3" runat="server" Text="Tercer Parcial" text-align="center" BorderColor="#339933" ForeColor="Blue"></asp:Label>

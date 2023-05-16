@@ -187,3 +187,10 @@ C:\Users\ZertD\Downloads\TEIKOK\TEIKOK\TEIKOK\obj\Debug\TEIKOK.csproj.CoreCompil
 C:\Users\ZertD\Downloads\TEIKOK\TEIKOK\TEIKOK\obj\Debug\TEIKOK.csproj.CopyComplete
 C:\Users\ZertD\Downloads\TEIKOK\TEIKOK\TEIKOK\obj\Debug\TEIKOK.dll
 C:\Users\ZertD\Downloads\TEIKOK\TEIKOK\TEIKOK\obj\Debug\TEIKOK.pdb
+C:\Users\Estudiante\source\repos\TEIKOK\TEIKOK\bin\AcessoDatosD.dll
+C:\Users\Estudiante\source\repos\TEIKOK\TEIKOK\bin\EntityFramework.dll
+C:\Users\Estudiante\source\repos\TEIKOK\TEIKOK\bin\AcessoDatosD.pdb
+C:\Users\Estudiante\source\repos\TEIKOK\TEIKOK\bin\AcessoDatosD.dll.config
+C:\Users\Estudiante\source\repos\TEIKOK\TEIKOK\bin\EntityFramework.xml
+C:\Users\Estudiante\source\repos\TEIKOK\TEIKOK\bin\EntityFramework.SqlServer.dll
+C:\Users\Estudiante\source\repos\TEIKOK\TEIKOK\bin\EntityFramework.SqlServer.xml

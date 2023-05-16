@@ -37,7 +37,6 @@ namespace TEIKOK
                 Error.Visible = true;
                 Error.Text = "La nota sobrepasa el 10 por lo que el resultado se vera afectado modifique la nota para que salga correcta o sino es por que uso . en vez de , y su dispositivo lo reconoce como aparte en vez de decimal\";\r\n            }";
             }
-
         }
 
         protected void E1(object sender, EventArgs e)
@@ -175,7 +174,6 @@ namespace TEIKOK
             }
         }
 
-   
 
         public bool ValidarNota(decimal nota)
         {
@@ -198,7 +196,12 @@ namespace TEIKOK
         }
 
 
-        
+   
+            }
 
-    }
-}
+
+
+
+        }
+
+
