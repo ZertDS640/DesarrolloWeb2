@@ -66,6 +66,27 @@
                     </div>
                         </div>
 
+
+                    <br />
+                    <br />
+                    <br />
+                    <asp:Panel ID="pnlListadoProductos" runat="server" Width="100%">
+                        <asp:TextBox ID="txtFiltro" runat="server"></asp:TextBox>
+                        <asp:Button ID="btnBuscar" runat="server" Text="Buscar Productos" OnClick="btnBuscarProductos" />
+                        <asp:GridView ID="dtgListadoProductos" runat="server" AutoGenerateColumns="false" >
+                            
+                            <Columns>
+                                <asp:BoundField DataField="NombreProducto" HeaderText="Nombre Producto"/>
+                                <asp:BoundField DataField="Precio" HeaderText="Precio"/>
+                                <asp:BoundField DataField="Categoria" HeaderText="Categoria"/>
+                                <asp:BoundField DataField="CodigoProducto" HeaderText="Código Producto"/>
+                                
+                            </Columns>
+
+                        </asp:GridView>
+
+                    </asp:Panel>
+
                     </div>
                 
                     

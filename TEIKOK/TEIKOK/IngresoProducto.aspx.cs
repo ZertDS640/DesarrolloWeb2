@@ -55,5 +55,26 @@ namespace TEIKOK
             ddlCategoria.SelectedIndex = 1;
         }
 
+        public void CargarProductos(string strFiltro)
+        {
+            ProductosN = new ProductosN();
+            var items = ProductosN.listadoProductos(strFiltro);
+            dtgListadoProductos.DataSource = items;
+            dtgListadoProductos.DataBind();
+        }
+
+        protected void btnBuscarProductos(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtFiltro.Text))
+            {
+                CargarProductos(txtFiltro.Text);
+
+
+            }
+            else
+            {
+
+            }
+        }
     }
 }

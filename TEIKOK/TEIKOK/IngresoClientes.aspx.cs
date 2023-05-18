@@ -15,7 +15,7 @@ namespace TEIKOK
         {
             if (!IsPostBack)
             {
-
+                CargarClientes("%");
             }
         }
 
@@ -49,5 +49,28 @@ namespace TEIKOK
             txtTelefono.Text = string.Empty;
             txtEmail.Text = string.Empty;
         }
+
+        public void CargarClientes(string strFiltro)
+        {
+            clientesN = new ClientesN();
+            var items = clientesN.listadoClientes(strFiltro);
+            dtgListadoClientes.DataSource = items;
+            dtgListadoClientes.DataBind();
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtFiltro.Text))
+            {
+                CargarClientes(txtFiltro.Text);
+
+
+            }
+            else
+            {
+
+            }
+        }
     }
+
 }
