@@ -26,3 +26,17 @@ C:\Users\ZertD\Downloads\TEIKOK\NegocioN\obj\Debug\NegocioN.csproj.CoreCompileIn
 C:\Users\ZertD\Downloads\TEIKOK\NegocioN\obj\Debug\NegocioN.csproj.CopyComplete
 C:\Users\ZertD\Downloads\TEIKOK\NegocioN\obj\Debug\NegocioN.dll
 C:\Users\ZertD\Downloads\TEIKOK\NegocioN\obj\Debug\NegocioN.pdb
+C:\Users\ZertD\source\repos\TEIKOK\NegocioN\bin\Debug\NegocioN.dll
+C:\Users\ZertD\source\repos\TEIKOK\NegocioN\bin\Debug\NegocioN.pdb
+C:\Users\ZertD\source\repos\TEIKOK\NegocioN\bin\Debug\AcessoDatosD.dll
+C:\Users\ZertD\source\repos\TEIKOK\NegocioN\bin\Debug\EntidadesE.dll
+C:\Users\ZertD\source\repos\TEIKOK\NegocioN\bin\Debug\EntityFramework.dll
+C:\Users\ZertD\source\repos\TEIKOK\NegocioN\bin\Debug\AcessoDatosD.pdb
+C:\Users\ZertD\source\repos\TEIKOK\NegocioN\bin\Debug\AcessoDatosD.dll.config
+C:\Users\ZertD\source\repos\TEIKOK\NegocioN\bin\Debug\EntidadesE.pdb
+C:\Users\ZertD\source\repos\TEIKOK\NegocioN\bin\Debug\EntityFramework.xml
+C:\Users\ZertD\source\repos\TEIKOK\NegocioN\obj\Debug\NegocioN.csproj.AssemblyReference.cache
+C:\Users\ZertD\source\repos\TEIKOK\NegocioN\obj\Debug\NegocioN.csproj.CoreCompileInputs.cache
+C:\Users\ZertD\source\repos\TEIKOK\NegocioN\obj\Debug\NegocioN.csproj.CopyComplete
+C:\Users\ZertD\source\repos\TEIKOK\NegocioN\obj\Debug\NegocioN.dll
+C:\Users\ZertD\source\repos\TEIKOK\NegocioN\obj\Debug\NegocioN.pdb

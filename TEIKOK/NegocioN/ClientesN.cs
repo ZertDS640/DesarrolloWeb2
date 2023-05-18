@@ -1,4 +1,5 @@
 ﻿using AcessoDatosD;
+using EntidadesE;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,12 @@ namespace NegocioN
             return ClientesD.InsertaClienteD(strCedula, strNombre, strApellido, strTelefono, @strDireccion, strEmail);
 
 
+        }
+
+        public List<ListadoClientesE> listadoClientes(string @strFiltro)
+        {
+            ClientesD = new ClientesD();
+            return ClientesD.ListadoClientes(strFiltro);
         }
     }
 }
