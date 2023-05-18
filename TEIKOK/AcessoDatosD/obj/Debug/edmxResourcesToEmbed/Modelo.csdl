@@ -57,6 +57,12 @@
       <Parameter Name="decPrecio" Mode="In" Type="Decimal" />
       <Parameter Name="intCategoria" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="sp_buscar_cliente" ReturnType="Collection(EJEMPLO1Model.sp_buscar_cliente_Result)">
+      <Parameter Name="strFiltro" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_buscar_productos" ReturnType="Collection(EJEMPLO1Model.sp_buscar_productos_Result)">
+      <Parameter Name="strFiltro" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_insertar_clientes_Result">
     <Property Type="Boolean" Name="Respuesta" Nullable="true" />
@@ -72,5 +78,27 @@
   </EntityType>
   <ComplexType Name="sp_inserta_productos_Result">
     <Property Type="Boolean" Name="Respuesta" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_buscar_cliente_Result">
+    <Property Type="String" Name="Cl" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Direccion" Nullable="true" />
+    <Property Type="String" Name="Correo" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="sp_buscar_cliente_Result1">
+    <Property Type="String" Name="Cl" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Direccion" Nullable="true" />
+    <Property Type="String" Name="Correo" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="sp_buscar_productos_Result">
+    <Property Type="String" Name="NombreProducto" Nullable="true" MaxLength="200" />
+    <Property Type="Decimal" Name="Precio" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="Categoria" Nullable="true" />
+    <Property Type="Int32" Name="CodigoProducto" Nullable="false" />
   </ComplexType>
 </Schema>

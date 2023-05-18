@@ -49,5 +49,27 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_buscar_cliente" FunctionName="EJEMPLO1Model.Store.sp_buscar_cliente">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EJEMPLO1Model.sp_buscar_cliente_Result">
+          <ScalarProperty Name="Cl" ColumnName="Cl" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_buscar_productos" FunctionName="EJEMPLO1Model.Store.sp_buscar_productos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EJEMPLO1Model.sp_buscar_productos_Result">
+          <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="CodigoProducto" ColumnName="CodigoProducto" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

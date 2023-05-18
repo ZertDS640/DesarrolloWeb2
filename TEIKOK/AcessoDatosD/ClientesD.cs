@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntidadesE;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace AcessoDatosD
     {
     
 
-    public bool? InsertaClienteD(String @strCedula, String @strNombre, String @strApellido, String @strTelefono,
+          public bool? InsertaClienteD(String @strCedula, String @strNombre, String @strApellido, String @strTelefono,
         String @strDireccion, String @strEmail)
         {
             bool? respuesta = false;
@@ -35,7 +36,34 @@ namespace AcessoDatosD
 
             return respuesta;
         }
+
+        public List<ListadoClientesE> ListadoClientes(string @strFiltro)
+        {
+
+            List<ListadoClientesE> Doc = new List<ListadoClientesE>();
+            using (EJEMPLO1Entities context = new AcessoDatosD.EJEMPLO1Entities())
+            {
+                var sp = context.sp_buscar_cliente(@strFiltro);
+                foreach (var item in sp)
+                {
+                    ListadoClientesE doc = new ListadoClientesE();
+                    doc.CI = item.Cl;
+                    doc.Nombre = item.Nombre;
+                    doc.Apellido = item.Apellido;
+                    doc.Telefono = item.Telefono;
+                    doc.Direccion = item.Direccion;
+                    doc.Correo = item.Correo;
+
+                    Doc.Add(doc);
+                }
+            }
+            return Doc;
+        }
+
     }
+
+    
+
 }
 
 

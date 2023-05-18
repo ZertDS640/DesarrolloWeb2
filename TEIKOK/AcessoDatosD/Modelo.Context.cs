@@ -100,6 +100,30 @@ public partial class EJEMPLO1Entities : DbContext
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_inserta_productos_Result>("sp_inserta_productos", strNombreProductoParameter, decPrecioParameter, intCategoriaParameter);
     }
 
+
+    public virtual ObjectResult<sp_buscar_cliente_Result> sp_buscar_cliente(string strFiltro)
+    {
+
+        var strFiltroParameter = strFiltro != null ?
+            new ObjectParameter("strFiltro", strFiltro) :
+            new ObjectParameter("strFiltro", typeof(string));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_buscar_cliente_Result>("sp_buscar_cliente", strFiltroParameter);
+    }
+
+
+    public virtual ObjectResult<sp_buscar_productos_Result> sp_buscar_productos(string strFiltro)
+    {
+
+        var strFiltroParameter = strFiltro != null ?
+            new ObjectParameter("strFiltro", strFiltro) :
+            new ObjectParameter("strFiltro", typeof(string));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_buscar_productos_Result>("sp_buscar_productos", strFiltroParameter);
+    }
+
 }
 
 }

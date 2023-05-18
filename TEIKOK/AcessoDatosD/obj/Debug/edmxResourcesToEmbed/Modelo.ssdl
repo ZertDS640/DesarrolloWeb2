@@ -43,6 +43,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="sp_buscar_cliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="strFiltro" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_buscar_productos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="strFiltro" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="sp_inserta_productos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="strNombreProducto" Type="varchar" Mode="In" />
     <Parameter Name="decPrecio" Type="decimal" Mode="In" />

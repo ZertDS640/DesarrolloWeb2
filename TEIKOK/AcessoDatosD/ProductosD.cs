@@ -1,6 +1,9 @@
-﻿using System;
+﻿using EntidadesE;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,6 +34,27 @@ namespace AcessoDatosD
             }
 
             return respuesta;
+        }
+
+        public List<ListadoProductosE> ListadoProductos(string @strFiltro)
+        {
+            List<ListadoProductosE> Doc = new List<ListadoProductosE>();
+            using (EJEMPLO1Entities context = new AcessoDatosD.EJEMPLO1Entities())
+            {
+                var sp = context.sp_buscar_productos(strFiltro);
+                foreach (var item in sp)
+                {
+                    ListadoProductosE doc = new ListadoProductosE();
+                    
+                    doc.NombreProducto = item.NombreProducto;
+                    doc.Precio = (decimal)item.Precio;
+                    doc.Categoria = (int)item.Categoria;
+                    doc.CodigoProducto = item.CodigoProducto;
+
+                    Doc.Add(doc);
+                }
+            }
+            return Doc;
         }
     }
 }
