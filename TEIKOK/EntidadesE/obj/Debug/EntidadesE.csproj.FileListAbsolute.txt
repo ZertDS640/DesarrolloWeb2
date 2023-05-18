@@ -10,3 +10,9 @@ C:\Users\ZertD\Downloads\TEIKOK\EntidadesE\obj\Debug\EntidadesE.csproj.AssemblyR
 C:\Users\ZertD\Downloads\TEIKOK\EntidadesE\obj\Debug\EntidadesE.csproj.CoreCompileInputs.cache
 C:\Users\ZertD\Downloads\TEIKOK\EntidadesE\obj\Debug\EntidadesE.dll
 C:\Users\ZertD\Downloads\TEIKOK\EntidadesE\obj\Debug\EntidadesE.pdb
+C:\Users\ZertD\source\repos\TEIKOK\EntidadesE\bin\Debug\EntidadesE.dll
+C:\Users\ZertD\source\repos\TEIKOK\EntidadesE\bin\Debug\EntidadesE.pdb
+C:\Users\ZertD\source\repos\TEIKOK\EntidadesE\obj\Debug\EntidadesE.csproj.AssemblyReference.cache
+C:\Users\ZertD\source\repos\TEIKOK\EntidadesE\obj\Debug\EntidadesE.csproj.CoreCompileInputs.cache
+C:\Users\ZertD\source\repos\TEIKOK\EntidadesE\obj\Debug\EntidadesE.dll
+C:\Users\ZertD\source\repos\TEIKOK\EntidadesE\obj\Debug\EntidadesE.pdb
