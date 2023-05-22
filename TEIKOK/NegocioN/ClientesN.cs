@@ -23,6 +23,16 @@ namespace NegocioN
 
         }
 
+        public bool? ActualizarCliente(String @strCedula, String @strNombre, String @strApellido, String @strTelefono, String @strDireccion, String @strEmail)
+        {
+            ClientesD = new ClientesD();
+
+
+            return ClientesD.ActualizarCliente(strCedula, strNombre, strApellido, strTelefono, @strDireccion, strEmail);
+
+
+        }
+
         public List<ListadoClientesE> listadoClientes(string @strFiltro)
         {
             ClientesD = new ClientesD();

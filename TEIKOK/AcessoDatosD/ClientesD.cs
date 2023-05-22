@@ -37,6 +37,30 @@ namespace AcessoDatosD
             return respuesta;
         }
 
+        public bool? ActualizarCliente(String @strCedula, String @strNombre, String @strApellido, String @strTelefono,
+        String @strDireccion, String @strEmail)
+        {
+            bool? respuesta = false;
+            try
+            {
+                using (EJEMPLO1Entities context = new AcessoDatosD.EJEMPLO1Entities())
+                {
+                    var sp = context.sp_actualizar_clientes(strCedula, strNombre, strApellido,
+                                                         strTelefono, strDireccion, strEmail);
+                    foreach (var item in sp)
+                    {
+                        respuesta = item.Value;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+            return respuesta;
+        }
+
         public List<ListadoClientesE> ListadoClientes(string @strFiltro)
         {
 

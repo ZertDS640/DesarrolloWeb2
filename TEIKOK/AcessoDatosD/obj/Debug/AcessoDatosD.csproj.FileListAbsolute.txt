@@ -40,3 +40,17 @@ C:\Users\ZertD\source\repos\TEIKOK\AcessoDatosD\obj\Debug\AcessoDatosD.csproj.Co
 C:\Users\ZertD\source\repos\TEIKOK\AcessoDatosD\obj\Debug\AcessoDatosD.csproj.CopyComplete
 C:\Users\ZertD\source\repos\TEIKOK\AcessoDatosD\obj\Debug\AcessoDatosD.dll
 C:\Users\ZertD\source\repos\TEIKOK\AcessoDatosD\obj\Debug\AcessoDatosD.pdb
+C:\Users\ZertDS\source\repos\TEIKOK\AcessoDatosD\bin\Debug\AcessoDatosD.dll.config
+C:\Users\ZertDS\source\repos\TEIKOK\AcessoDatosD\bin\Debug\AcessoDatosD.dll
+C:\Users\ZertDS\source\repos\TEIKOK\AcessoDatosD\bin\Debug\AcessoDatosD.pdb
+C:\Users\ZertDS\source\repos\TEIKOK\AcessoDatosD\bin\Debug\EntidadesE.dll
+C:\Users\ZertDS\source\repos\TEIKOK\AcessoDatosD\bin\Debug\EntityFramework.dll
+C:\Users\ZertDS\source\repos\TEIKOK\AcessoDatosD\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ZertDS\source\repos\TEIKOK\AcessoDatosD\bin\Debug\EntidadesE.pdb
+C:\Users\ZertDS\source\repos\TEIKOK\AcessoDatosD\bin\Debug\EntityFramework.xml
+C:\Users\ZertDS\source\repos\TEIKOK\AcessoDatosD\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ZertDS\source\repos\TEIKOK\AcessoDatosD\obj\Debug\AcessoDatosD.csproj.AssemblyReference.cache
+C:\Users\ZertDS\source\repos\TEIKOK\AcessoDatosD\obj\Debug\AcessoDatosD.csproj.CoreCompileInputs.cache
+C:\Users\ZertDS\source\repos\TEIKOK\AcessoDatosD\obj\Debug\AcessoDatosD.csproj.CopyComplete
+C:\Users\ZertDS\source\repos\TEIKOK\AcessoDatosD\obj\Debug\AcessoDatosD.dll
+C:\Users\ZertDS\source\repos\TEIKOK\AcessoDatosD\obj\Debug\AcessoDatosD.pdb

@@ -23,6 +23,12 @@ namespace NegocioN
 
         }
 
+        public bool? ActualizarProducto(String @strNombreProducto, Decimal @decPrecio, int @intCategoria)
+        {
+            ProductosD = new ProductosD();
+            return ProductosD.ActualizarProducto(strNombreProducto, decPrecio, intCategoria);
+        }
+
         public List<ListadoProductosE> listadoProductos(string @strFiltro)
         {
             ProductosD = new ProductosD();

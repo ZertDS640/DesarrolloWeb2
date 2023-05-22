@@ -48,10 +48,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="sp_buscar_cliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="strFiltro" Type="varchar" Mode="In" />
+        <Function Name="sp_actualizar_clientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="strCedula" Type="varchar" Mode="In" />
+          <Parameter Name="strNombre" Type="varchar" Mode="In" />
+          <Parameter Name="strApellido" Type="varchar" Mode="In" />
+          <Parameter Name="strTelefono" Type="varchar" Mode="In" />
+          <Parameter Name="strDireccion" Type="varchar(max)" Mode="In" />
+          <Parameter Name="strCorreo" Type="varchar" Mode="In" />
         </Function>
-        <Function Name="sp_buscar_productos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="sp_actualizar_producto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="strNombreProducto" Type="varchar" Mode="In" />
+          <Parameter Name="decPrecio" Type="decimal" Mode="In" />
+          <Parameter Name="intCategoria" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_buscar_cliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="strFiltro" Type="varchar" Mode="In" />
         </Function>
         <Function Name="sp_inserta_productos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -66,6 +76,12 @@
           <Parameter Name="strTelefono" Type="varchar" Mode="In" />
           <Parameter Name="strDireccion" Type="varchar" Mode="In" />
           <Parameter Name="strEmail" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_listado_clientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="strCedula" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_listado_productos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="strNombreProducto" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="EJEMPLO1ModelStoreContainer">
           <EntitySet Name="ACCESO_DATOS" EntityType="Self.ACCESO_DATOS" Schema="dbo" store:Type="Tables" />
@@ -143,6 +159,22 @@
           <FunctionImport Name="sp_buscar_productos" ReturnType="Collection(EJEMPLO1Model.sp_buscar_productos_Result)">
           <Parameter Name="strFiltro" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="sp_actualizar_clientes" ReturnType="Collection(Boolean)">
+            <Parameter Name="strCedula" Mode="In" Type="String" />
+            <Parameter Name="strNombre" Mode="In" Type="String" />
+            <Parameter Name="strApellido" Mode="In" Type="String" />
+            <Parameter Name="strTelefono" Mode="In" Type="String" />
+            <Parameter Name="strDireccion" Mode="In" Type="String" />
+            <Parameter Name="strCorreo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_actualizar_producto" ReturnType="Collection(Boolean)">
+            <Parameter Name="strNombreProducto" Mode="In" Type="String" />
+            <Parameter Name="decPrecio" Mode="In" Type="Decimal" />
+            <Parameter Name="intCategoria" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_listado_clientes" ReturnType="Collection(EJEMPLO1Model.sp_listado_clientes_Result)">
+            <Parameter Name="strCedula" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_insertar_clientes_Result">
           <Property Type="Boolean" Name="Respuesta" Nullable="true" />
@@ -180,6 +212,20 @@
           <Property Type="Decimal" Name="Precio" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Int32" Name="Categoria" Nullable="true" />
           <Property Type="Int32" Name="CodigoProducto" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_listado_productos_Result">
+          <Property Type="String" Name="NombreProducto" Nullable="true" MaxLength="200" />
+          <Property Type="Decimal" Name="Precio" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="Categoria" Nullable="true" />
+          <Property Type="Int32" Name="CodigoProducto" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_listado_clientes_Result">
+          <Property Type="String" Name="Cl" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Direccion" Nullable="true" />
+          <Property Type="String" Name="Correo" Nullable="true" MaxLength="200" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -247,13 +293,17 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_buscar_productos" FunctionName="EJEMPLO1Model.Store.sp_buscar_productos">
+          <FunctionImportMapping FunctionImportName="sp_actualizar_clientes" FunctionName="EJEMPLO1Model.Store.sp_actualizar_clientes" />
+          <FunctionImportMapping FunctionImportName="sp_actualizar_producto" FunctionName="EJEMPLO1Model.Store.sp_actualizar_producto" />
+          <FunctionImportMapping FunctionImportName="sp_listado_clientes" FunctionName="EJEMPLO1Model.Store.sp_listado_clientes">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="EJEMPLO1Model.sp_buscar_productos_Result">
-                <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
-                <ScalarProperty Name="Precio" ColumnName="Precio" />
-                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
-                <ScalarProperty Name="CodigoProducto" ColumnName="CodigoProducto" />
+              <ComplexTypeMapping TypeName="EJEMPLO1Model.sp_listado_clientes_Result">
+                <ScalarProperty Name="Cl" ColumnName="Cl" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

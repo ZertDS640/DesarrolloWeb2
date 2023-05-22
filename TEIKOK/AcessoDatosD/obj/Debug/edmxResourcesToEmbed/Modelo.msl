@@ -61,15 +61,7 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_buscar_productos" FunctionName="EJEMPLO1Model.Store.sp_buscar_productos">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="EJEMPLO1Model.sp_buscar_productos_Result">
-          <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
-          <ScalarProperty Name="Precio" ColumnName="Precio" />
-          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
-          <ScalarProperty Name="CodigoProducto" ColumnName="CodigoProducto" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_actualizar_clientes" FunctionName="EJEMPLO1Model.Store.sp_actualizar_clientes" />
+    <FunctionImportMapping FunctionImportName="sp_actualizar_producto" FunctionName="EJEMPLO1Model.Store.sp_actualizar_producto" />
   </EntityContainerMapping>
 </Mapping>

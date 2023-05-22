@@ -21,7 +21,7 @@ namespace AcessoDatosD
             {
                 using (EJEMPLO1Entities context = new AcessoDatosD.EJEMPLO1Entities())
                 {
-                    var sp = context.sp_inserta_productos(strNombreProducto, decPrecio, @intCategoria);
+                    var sp = context.sp_inserta_productos(strNombreProducto, @decPrecio, @intCategoria);
                     foreach (var item in sp)
                     {
                         respuesta = item.Respuesta;
@@ -34,6 +34,30 @@ namespace AcessoDatosD
             }
 
             return respuesta;
+        }
+
+        public bool? ActualizarProducto(String @strNombreProducto, Decimal @decPrecio, int @intCategoria)
+        {
+            bool? respuesta = false;
+            try
+            {
+                using (EJEMPLO1Entities Context = new AcessoDatosD.EJEMPLO1Entities())
+                {
+
+                    var sp = Context.sp_actualizar_producto(strNombreProducto, decPrecio, intCategoria);
+                    foreach (var item in sp)
+                    {
+                        respuesta = item.Value;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            return respuesta;
+
         }
 
         public List<ListadoProductosE> ListadoProductos(string @strFiltro)
@@ -49,7 +73,7 @@ namespace AcessoDatosD
                     doc.NombreProducto = item.NombreProducto;
                     doc.Precio = (decimal)item.Precio;
                     doc.Categoria = (int)item.Categoria;
-                    doc.CodigoProducto = item.CodigoProducto;
+                    doc.CodigoProducto = (int)item.CodigoProducto;
 
                     Doc.Add(doc);
                 }

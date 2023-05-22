@@ -124,6 +124,77 @@ public partial class EJEMPLO1Entities : DbContext
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_buscar_productos_Result>("sp_buscar_productos", strFiltroParameter);
     }
 
+
+    public virtual ObjectResult<Nullable<bool>> sp_actualizar_clientes(string strCedula, string strNombre, string strApellido, string strTelefono, string strDireccion, string strCorreo)
+    {
+
+        var strCedulaParameter = strCedula != null ?
+            new ObjectParameter("strCedula", strCedula) :
+            new ObjectParameter("strCedula", typeof(string));
+
+
+        var strNombreParameter = strNombre != null ?
+            new ObjectParameter("strNombre", strNombre) :
+            new ObjectParameter("strNombre", typeof(string));
+
+
+        var strApellidoParameter = strApellido != null ?
+            new ObjectParameter("strApellido", strApellido) :
+            new ObjectParameter("strApellido", typeof(string));
+
+
+        var strTelefonoParameter = strTelefono != null ?
+            new ObjectParameter("strTelefono", strTelefono) :
+            new ObjectParameter("strTelefono", typeof(string));
+
+
+        var strDireccionParameter = strDireccion != null ?
+            new ObjectParameter("strDireccion", strDireccion) :
+            new ObjectParameter("strDireccion", typeof(string));
+
+
+        var strCorreoParameter = strCorreo != null ?
+            new ObjectParameter("strCorreo", strCorreo) :
+            new ObjectParameter("strCorreo", typeof(string));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("sp_actualizar_clientes", strCedulaParameter, strNombreParameter, strApellidoParameter, strTelefonoParameter, strDireccionParameter, strCorreoParameter);
+    }
+
+
+    public virtual ObjectResult<Nullable<bool>> sp_actualizar_producto(string strNombreProducto, Nullable<decimal> decPrecio, Nullable<int> intCategoria)
+    {
+
+        var strNombreProductoParameter = strNombreProducto != null ?
+            new ObjectParameter("strNombreProducto", strNombreProducto) :
+            new ObjectParameter("strNombreProducto", typeof(string));
+
+
+        var decPrecioParameter = decPrecio.HasValue ?
+            new ObjectParameter("decPrecio", decPrecio) :
+            new ObjectParameter("decPrecio", typeof(decimal));
+
+
+        var intCategoriaParameter = intCategoria.HasValue ?
+            new ObjectParameter("intCategoria", intCategoria) :
+            new ObjectParameter("intCategoria", typeof(int));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("sp_actualizar_producto", strNombreProductoParameter, decPrecioParameter, intCategoriaParameter);
+    }
+
+
+    public virtual ObjectResult<sp_listado_clientes_Result> sp_listado_clientes(string strCedula)
+    {
+
+        var strCedulaParameter = strCedula != null ?
+            new ObjectParameter("strCedula", strCedula) :
+            new ObjectParameter("strCedula", typeof(string));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_listado_clientes_Result>("sp_listado_clientes", strCedulaParameter);
+    }
+
 }
 
 }

@@ -63,6 +63,19 @@
     <FunctionImport Name="sp_buscar_productos" ReturnType="Collection(EJEMPLO1Model.sp_buscar_productos_Result)">
       <Parameter Name="strFiltro" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="sp_actualizar_clientes" ReturnType="Collection(Boolean)">
+      <Parameter Name="strCedula" Mode="In" Type="String" />
+      <Parameter Name="strNombre" Mode="In" Type="String" />
+      <Parameter Name="strApellido" Mode="In" Type="String" />
+      <Parameter Name="strTelefono" Mode="In" Type="String" />
+      <Parameter Name="strDireccion" Mode="In" Type="String" />
+      <Parameter Name="strCorreo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_actualizar_producto" ReturnType="Collection(Boolean)">
+      <Parameter Name="strNombreProducto" Mode="In" Type="String" />
+      <Parameter Name="decPrecio" Mode="In" Type="Decimal" />
+      <Parameter Name="intCategoria" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_insertar_clientes_Result">
     <Property Type="Boolean" Name="Respuesta" Nullable="true" />
@@ -96,6 +109,12 @@
     <Property Type="String" Name="Correo" Nullable="true" MaxLength="200" />
   </ComplexType>
   <ComplexType Name="sp_buscar_productos_Result">
+    <Property Type="String" Name="NombreProducto" Nullable="true" MaxLength="200" />
+    <Property Type="Decimal" Name="Precio" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="Categoria" Nullable="true" />
+    <Property Type="Int32" Name="CodigoProducto" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_listado_productos_Result">
     <Property Type="String" Name="NombreProducto" Nullable="true" MaxLength="200" />
     <Property Type="Decimal" Name="Precio" Nullable="true" Precision="18" Scale="2" />
     <Property Type="Int32" Name="Categoria" Nullable="true" />
