@@ -76,5 +76,39 @@ namespace TEIKOK
 
             }
         }
+        protected void btnApa_Click(object sender, EventArgs e)
+        {
+            pnlAgregarProducto.Visible = true;
+        }
+
+        protected void dtgListadoProductos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            pnlAgregarProducto.Visible = true;
+            txtNombreProducto.Text = HttpUtility.HtmlDecode(dtgListadoProductos.SelectedRow.Cells[1].Text);
+            txtPrecio.Text = HttpUtility.HtmlDecode(dtgListadoProductos.SelectedRow.Cells[2].Text);
+            ddlCategoria.Text = HttpUtility.HtmlDecode(dtgListadoProductos.SelectedRow.Cells[3].Text);
+            
+        }
+
+        protected void BtnUpdate_Click(object sender, EventArgs e)
+        {
+            ProductosN = new ProductosN();
+            bool? respuesta = ProductosN.ActualizarProducto(txtNombreProducto.Text, 
+            Convert.ToDecimal(txtPrecio.Text), Convert.ToInt16(ddlCategoria.SelectedValue));
+            if (respuesta == true)
+            {
+
+                lblRegistro.Text = "Se actualizo  correctamente";
+                lblRegistro.Visible = true;
+                pnlListadoProductos.Visible = false;
+                Limpiar();
+                CargarProductos("%");
+            }
+            else
+            {
+                lblRegistro.Text = "No se Actualizo el cliente";
+                lblRegistro.Visible = true;
+            }
+        }
     }
 }

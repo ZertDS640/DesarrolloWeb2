@@ -10,6 +10,33 @@
 <body>
     <form id="form1" runat="server">
         <div style="width:100%; margin-left:auto; margin-right:auto; text-align: center; padding: 3em;">
+            <h1>Clientes</h1>
+            <asp:Panel ID="pnlListadoClientes" runat="server" Width="100%" >
+                        <asp:TextBox ID="txtFiltro" runat="server"></asp:TextBox>
+                <asp:Button ID="btnBuscar" runat="server" Text="Buscar Clientes" OnClick="btnBuscar_Click" BorderColor="#009900" ForeColor="Black" BackColor="#99FF66" />
+                
+                <asp:GridView ID="dtgListadoClientes" runat="server" AutoGenerateColumns="false"
+                    AutoGenerateSelectButton="true" Width="100%" OnSelectedIndexChanged="dtgListadoClientes_SelectedIndexChanged" HeaderStyle-Font-Bold="false" BackColor="#ffcccc">
+                            
+                            <Columns>
+                                <asp:BoundField DataField="CI" HeaderText="Cédula"/>
+                                <asp:BoundField DataField="Nombre" HeaderText="Nombre"/>
+                                <asp:BoundField DataField="Apellido" HeaderText="Apellido"/>
+                                <asp:BoundField DataField="Direccion" HeaderText="Dirección"/>
+                                <asp:BoundField DataField="Telefono" HeaderText="Teléfono"/>
+                                <asp:BoundField DataField="Correo" HeaderText="Correo"/>
+                            </Columns>
+
+                        </asp:GridView>
+
+                
+                    </asp:Panel>
+                <br />
+                    <div>
+                    <asp:Button ID="btnApa" runat="server" Text="Agregar Cliente" OnClick="btnApa_Click" BorderColor="#009900" ForeColor="Black" BackColor="#99FF66"/>
+                </div>
+
+        <asp:Panel ID="pnlAgregarCliente" runat="server" Width="100%" Visible="false" > 
             <h1>Ingrese Datos Clientes</h1>
             <div class="container">
                 <div class="room">
@@ -54,30 +81,15 @@
                     </div>
                     <br />
                     <div class="col">
-                        <asp:Button ID="BtnGuardar" runat="server" Text="Guardar Informacion" Onclick="BtnGuardar_Click"/>
+                        <asp:Button ID="BtnGuardar" runat="server" Text="Guardar Informacion" Onclick="BtnGuardar_Click"  BorderColor="#009900" ForeColor="Black" BackColor="#99FF66"/>
+                     &nbsp &nbsp &nbsp &nbsp
+                        <asp:Button ID="BtnUpdate" runat="server" Text="Actualizar Informacion" Onclick="BtnUpdate_Click"  BorderColor="#009900" ForeColor="Black" BackColor="#99FF66"/>
+                    &nbsp &nbsp &nbsp &nbsp
+                        <asp:Button ID="btnBorrar" runat="server" Text="Borrar Informacion" Onclick="BtnGuardar_Click"  BorderColor="#009900" ForeColor="Black" BackColor="#99FF66"/>
                     </div>
 
-                    <br />
-                    <br />
-                    <br />
-                    <asp:Panel ID="pnlListadoClientes" runat="server" Width="100%">
-                        <asp:TextBox ID="txtFiltro" runat="server"></asp:TextBox>
-                        <asp:Button ID="btnBuscar" runat="server" Text="Buscar Clientes"  onclick="btnBuscar_Click" />
-                        <asp:GridView ID="dtgListadoClientes" runat="server" AutoGenerateColumns="false" >
-                            
-                            
-                            <Columns>
-                                <asp:BoundField DataField="CI" HeaderText="Cédula"/>
-                                <asp:BoundField DataField="Nombre" HeaderText="Nombre"/>
-                                <asp:BoundField DataField="Apellido" HeaderText="Apellido"/>
-                                <asp:BoundField DataField="Direccion" HeaderText="Dirección"/>
-                                <asp:BoundField DataField="Telefono" HeaderText="Teléfono"/>
-                                <asp:BoundField DataField="Correo" HeaderText="Correo"/>
-                            </Columns>
-
-                        </asp:GridView>
-
-                    </asp:Panel>
+                    
+                    
 
 
 
@@ -87,7 +99,7 @@
 
 
                 </div>
-
+            </asp:Panel>
             </div>
 
         

@@ -19,7 +19,7 @@ namespace TEIKOK
             }
         }
 
-      
+
 
         protected void BtnGuardar_Click(object sender, EventArgs e)
         {
@@ -69,6 +69,49 @@ namespace TEIKOK
             else
             {
 
+            }
+        }
+
+
+
+        protected void dtgListadoClientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            pnlAgregarCliente.Visible = true;
+            txtCedula.Text = HttpUtility.HtmlDecode(dtgListadoClientes.SelectedRow.Cells[1].Text);
+            txtNombre.Text = HttpUtility.HtmlDecode(dtgListadoClientes.SelectedRow.Cells[2].Text);
+            txtApellido.Text = HttpUtility.HtmlDecode(dtgListadoClientes.SelectedRow.Cells[3].Text);
+            txtTelefono.Text = HttpUtility.HtmlDecode(dtgListadoClientes.SelectedRow.Cells[4].Text);
+            txtDireccion.Text = HttpUtility.HtmlDecode(dtgListadoClientes.SelectedRow.Cells[5].Text);
+            txtEmail.Text = HttpUtility.HtmlDecode(dtgListadoClientes.SelectedRow.Cells[6].Text);
+        }
+
+        protected void btnApa_Click(object sender, EventArgs e)
+        {
+            pnlAgregarCliente.Visible = true;
+        }
+
+        protected void BtnUpdate_Click(object sender, EventArgs e)
+        {
+            clientesN = new ClientesN();
+
+            bool? respuesta = clientesN.ActualizarCliente(txtCedula.Text, txtNombre.Text, txtApellido.Text, txtTelefono.Text,
+                txtDireccion.Text, txtEmail.Text);
+
+            if (respuesta == true)
+            {
+
+                lblRegistro.Text = "Se Actualizo Correctamente";
+                lblRegistro.Visible = true;
+                Limpiar();
+                CargarClientes("%");
+            }
+            else
+            {
+
+                lblRegistro.Text = "Hubo un error";
+                lblRegistro.Visible = true;
+                Limpiar();
+                CargarClientes("%");
             }
         }
     }
