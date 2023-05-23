@@ -15,7 +15,7 @@ namespace TEIKOK
         {
             if (!IsPostBack)
             {
-
+                CargarProductos("%");
             }
         }
 
@@ -24,11 +24,11 @@ namespace TEIKOK
         protected void BtnGuardar_Click(object sender, EventArgs e)
         {
             ProductosN = new ProductosN();
-            bool? respuesta = ProductosN.InsertaProductosD(txtNombreProducto.Text, 
+            bool? Respuesta = ProductosN.InsertaProductosD(txtNombreProducto.Text, 
                 Convert.ToDecimal(txtPrecio.Text) ,
                 Convert.ToInt16(ddlCategoria.SelectedValue) );
 
-            if (respuesta == true)
+            if (Respuesta == true)
             {
 
                 script = "alert('El Producto se a registrado correctamente.');";
@@ -58,7 +58,7 @@ namespace TEIKOK
         public void CargarProductos(string strFiltro)
         {
             ProductosN = new ProductosN();
-            var items = ProductosN.listadoProductos(strFiltro);
+            var items = ProductosN.ListadoProductos(strFiltro);
             dtgListadoProductos.DataSource = items;
             dtgListadoProductos.DataBind();
         }
@@ -108,6 +108,31 @@ namespace TEIKOK
             {
                 lblRegistro.Text = "No se Actualizo el cliente";
                 lblRegistro.Visible = true;
+            }
+        }
+
+        protected void btnBorrar_Click(object sender, EventArgs e)
+        {
+            ProductosN = new ProductosN();
+
+            bool? respuesta = ProductosN.EliminarProductos(txtNombreProducto.Text.Trim());
+
+            if (respuesta == true)
+            {
+
+                lblRegistro.Text = "El Registro se Elimino Correctamente";
+                lblRegistro.Visible = true;
+                pnlAgregarProducto.Visible = false;
+                Limpiar();
+                CargarProductos("%");
+            }
+            else
+            {
+
+                lblRegistro.Text = "Hubo un error";
+                lblRegistro.Visible = true;
+                Limpiar();
+                CargarProductos("%");
             }
         }
     }

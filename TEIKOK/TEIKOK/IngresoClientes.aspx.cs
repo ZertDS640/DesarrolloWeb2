@@ -114,6 +114,31 @@ namespace TEIKOK
                 CargarClientes("%");
             }
         }
+
+        protected void btnBorrar_Click(object sender, EventArgs e)
+        {
+            clientesN = new ClientesN();
+
+            bool? respuesta = clientesN.EliminarClientes(txtCedula.Text.Trim());
+
+            if (respuesta == true)
+            {
+
+                lblRegistro.Text = "El Registro se Elimino Correctamente";
+                lblRegistro.Visible = true;
+                pnlAgregarCliente.Visible = false;
+                Limpiar();
+                CargarClientes("%");
+            }
+            else
+            {
+
+                lblRegistro.Text = "Hubo un error";
+                lblRegistro.Visible = true;
+                Limpiar();
+                CargarClientes("%");
+            }
+        }
     }
 
 }

@@ -28,7 +28,7 @@
             <h1>Productos</h1>
             <asp:Panel ID="pnlListadoProductos" runat="server" Width="100%">
                         <asp:TextBox ID="txtFiltro" runat="server"></asp:TextBox>
-                        <asp:Button ID="btnBuscar" runat="server" Text="Buscar Productos" OnClick="btnBuscarProductos" BorderColor="#009900" ForeColor="Black" BackColor="#99FF66"/>
+<asp:Button ID="btnBuscar" runat="server" Text="Buscar Productos" OnClick="btnBuscarProductos" BorderColor="#009900" ForeColor="Black" BackColor="#99FF66"/>
                         <asp:GridView ID="dtgListadoProductos" runat="server" AutoGenerateColumns="false" 
                             AutoGenerateSelectButton="true" Width="100%" OnSelectedIndexChanged="dtgListadoProductos_SelectedIndexChanged" HeaderStyle-Font-Bold="false" BackColor="#ffcccc">
                             
