@@ -25,7 +25,7 @@ namespace AcessoDatosD
                                                          strTelefono, strDireccion, strEmail);
                     foreach (var item in sp)
                     {
-                        respuesta = item.Respuesta;
+                        respuesta = item.Value;
                     }
                 }
             }
@@ -82,6 +82,28 @@ namespace AcessoDatosD
                 }
             }
             return Doc;
+        }
+
+        public bool? EliminarClientes(String @strCedula)
+        {
+            bool? respuesta = false;
+            try
+            {
+                using (EJEMPLO1Entities context = new AcessoDatosD.EJEMPLO1Entities())
+                {
+                    var sp = context.sp_eliminar_cliente(strCedula);
+                    foreach (var item in sp)
+                    {
+                        respuesta = item.Value;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+            return respuesta;
         }
 
     }

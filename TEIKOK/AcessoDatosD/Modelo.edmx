@@ -64,6 +64,12 @@
         <Function Name="sp_buscar_cliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="strFiltro" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="sp_eliminar_cliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="strCedula" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_eliminar_producto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="strNombreProducto" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="sp_inserta_productos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="strNombreProducto" Type="varchar" Mode="In" />
           <Parameter Name="decPrecio" Type="decimal" Mode="In" />
@@ -77,11 +83,8 @@
           <Parameter Name="strDireccion" Type="varchar" Mode="In" />
           <Parameter Name="strEmail" Type="nvarchar" Mode="In" />
         </Function>
-        <Function Name="sp_listado_clientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="strCedula" Type="varchar" Mode="In" />
-        </Function>
         <Function Name="sp_listado_productos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="strNombreProducto" Type="varchar" Mode="In" />
+          <Parameter Name="strFiltro" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="EJEMPLO1ModelStoreContainer">
           <EntitySet Name="ACCESO_DATOS" EntityType="Self.ACCESO_DATOS" Schema="dbo" store:Type="Tables" />
@@ -96,6 +99,18 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EJEMPLO1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ACCESO_DATOS">
+          <Key>
+            <PropertyRef Name="IDAccesoDatos" />
+          </Key>
+          <Property Name="IDAccesoDatos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cl" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoUsuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="0" />
+          <Property Name="Estado" Type="Boolean" />
+          <NavigationProperty Name="CLIENTES" Relationship="Self.FK_AccesoDatos_CLIENTES" FromRole="ACCESO_DATOS" ToRole="CLIENTES" />
+        </EntityType>
         <EntityType Name="CLIENTES">
           <Key>
             <PropertyRef Name="Cl" />
@@ -108,17 +123,14 @@
           <Property Name="Correo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ACCESO_DATOS" Relationship="Self.FK_AccesoDatos_CLIENTES" FromRole="CLIENTES" ToRole="ACCESO_DATOS" />
         </EntityType>
-        <EntityType Name="ACCESO_DATOS">
+        <EntityType Name="PRODUCTO">
           <Key>
-            <PropertyRef Name="IDAccesoDatos" />
+            <PropertyRef Name="CodigoProducto" />
           </Key>
-          <Property Name="IDAccesoDatos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Cl" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="CodigoUsuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="FechaRegistro" Type="DateTime" Precision="0" />
-          <Property Name="Estado" Type="Boolean" />
-          <NavigationProperty Name="CLIENTES" Relationship="Self.FK_AccesoDatos_CLIENTES" FromRole="ACCESO_DATOS" ToRole="CLIENTES" />
+          <Property Name="NombreProducto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Categoria" Type="Int32" />
+          <Property Name="CodigoProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <Association Name="FK_AccesoDatos_CLIENTES">
           <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="0..1" />
@@ -133,32 +145,13 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="EJEMPLO1Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CLIENTES" EntityType="Self.CLIENTES" />
           <EntitySet Name="ACCESO_DATOS" EntityType="Self.ACCESO_DATOS" />
+          <EntitySet Name="CLIENTES" EntityType="Self.CLIENTES" />
+          <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" />
           <AssociationSet Name="FK_AccesoDatos_CLIENTES" Association="Self.FK_AccesoDatos_CLIENTES">
             <End Role="CLIENTES" EntitySet="CLIENTES" />
             <End Role="ACCESO_DATOS" EntitySet="ACCESO_DATOS" />
           </AssociationSet>
-          <FunctionImport Name="sp_insertar_clientes" ReturnType="Collection(EJEMPLO1Model.sp_insertar_clientes_Result)">
-            <Parameter Name="strCedula" Mode="In" Type="String" />
-            <Parameter Name="strNombre" Mode="In" Type="String" />
-            <Parameter Name="strApellido" Mode="In" Type="String" />
-            <Parameter Name="strTelefono" Mode="In" Type="String" />
-            <Parameter Name="strDireccion" Mode="In" Type="String" />
-            <Parameter Name="strEmail" Mode="In" Type="String" />
-          </FunctionImport>
-          <EntitySet Name="PRODUCTO" EntityType="EJEMPLO1Model.PRODUCTO" />
-          <FunctionImport Name="sp_inserta_productos" ReturnType="Collection(EJEMPLO1Model.sp_inserta_productos_Result)">
-            <Parameter Name="strNombreProducto" Mode="In" Type="String" />
-            <Parameter Name="decPrecio" Mode="In" Type="Decimal" />
-            <Parameter Name="intCategoria" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_buscar_cliente" ReturnType="Collection(EJEMPLO1Model.sp_buscar_cliente_Result)">
-          <Parameter Name="strFiltro" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_buscar_productos" ReturnType="Collection(EJEMPLO1Model.sp_buscar_productos_Result)">
-          <Parameter Name="strFiltro" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="sp_actualizar_clientes" ReturnType="Collection(Boolean)">
             <Parameter Name="strCedula" Mode="In" Type="String" />
             <Parameter Name="strNombre" Mode="In" Type="String" />
@@ -167,30 +160,37 @@
             <Parameter Name="strDireccion" Mode="In" Type="String" />
             <Parameter Name="strCorreo" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="sp_buscar_cliente" ReturnType="Collection(EJEMPLO1Model.sp_buscar_cliente_Result)">
+          <Parameter Name="strFiltro" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_eliminar_cliente" ReturnType="Collection(Boolean)">
+          <Parameter Name="strCedula" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_inserta_productos" ReturnType="Collection(Boolean)">
+            <Parameter Name="strNombreProducto" Mode="In" Type="String" />
+            <Parameter Name="decPrecio" Mode="In" Type="Decimal" />
+            <Parameter Name="intCategoria" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_insertar_clientes" ReturnType="Collection(EJEMPLO1Model.sp_insertar_clientes_Result)">
+            <Parameter Name="strCedula" Mode="In" Type="String" />
+            <Parameter Name="strNombre" Mode="In" Type="String" />
+            <Parameter Name="strApellido" Mode="In" Type="String" />
+            <Parameter Name="strTelefono" Mode="In" Type="String" />
+            <Parameter Name="strDireccion" Mode="In" Type="String" />
+            <Parameter Name="strEmail" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_listado_productos" ReturnType="Collection(EJEMPLO1Model.sp_listado_productos_Result)">
+          <Parameter Name="strFiltro" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="sp_actualizar_producto" ReturnType="Collection(Boolean)">
             <Parameter Name="strNombreProducto" Mode="In" Type="String" />
             <Parameter Name="decPrecio" Mode="In" Type="Decimal" />
             <Parameter Name="intCategoria" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_listado_clientes" ReturnType="Collection(EJEMPLO1Model.sp_listado_clientes_Result)">
-            <Parameter Name="strCedula" Mode="In" Type="String" />
+          <FunctionImport Name="sp_eliminar_producto" ReturnType="Collection(Boolean)">
+            <Parameter Name="strNombreProducto" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="sp_insertar_clientes_Result">
-          <Property Type="Boolean" Name="Respuesta" Nullable="true" />
-        </ComplexType>
-        <EntityType Name="PRODUCTO">
-          <Key>
-            <PropertyRef Name="CodigoProducto" />
-          </Key>
-          <Property Name="NombreProducto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Categoria" Type="Int32" />
-          <Property Name="CodigoProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <ComplexType Name="sp_inserta_productos_Result">
-          <Property Type="Boolean" Name="Respuesta" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="sp_buscar_cliente_Result">
           <Property Type="String" Name="Cl" Nullable="false" MaxLength="10" />
           <Property Type="String" Name="Nombre" Nullable="true" MaxLength="30" />
@@ -199,33 +199,14 @@
           <Property Type="String" Name="Direccion" Nullable="true" />
           <Property Type="String" Name="Correo" Nullable="true" MaxLength="200" />
         </ComplexType>
-        <ComplexType Name="sp_buscar_cliente_Result1">
-          <Property Type="String" Name="Cl" Nullable="false" MaxLength="10" />
-          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="10" />
-          <Property Type="String" Name="Direccion" Nullable="true" />
-          <Property Type="String" Name="Correo" Nullable="true" MaxLength="200" />
-        </ComplexType>
-        <ComplexType Name="sp_buscar_productos_Result">
-          <Property Type="String" Name="NombreProducto" Nullable="true" MaxLength="200" />
-          <Property Type="Decimal" Name="Precio" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="Int32" Name="Categoria" Nullable="true" />
-          <Property Type="Int32" Name="CodigoProducto" Nullable="false" />
-        </ComplexType>
         <ComplexType Name="sp_listado_productos_Result">
           <Property Type="String" Name="NombreProducto" Nullable="true" MaxLength="200" />
           <Property Type="Decimal" Name="Precio" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Int32" Name="Categoria" Nullable="true" />
           <Property Type="Int32" Name="CodigoProducto" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="sp_listado_clientes_Result">
-          <Property Type="String" Name="Cl" Nullable="false" MaxLength="10" />
-          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="30" />
-          <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="10" />
-          <Property Type="String" Name="Direccion" Nullable="true" />
-          <Property Type="String" Name="Correo" Nullable="true" MaxLength="200" />
+        <ComplexType Name="sp_insertar_clientes_Result">
+          <Property Type="Boolean" Name="Respuesta" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -233,18 +214,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="EJEMPLO1ModelStoreContainer" CdmEntityContainer="EJEMPLO1Entities">
-          <EntitySetMapping Name="CLIENTES">
-            <EntityTypeMapping TypeName="EJEMPLO1Model.CLIENTES">
-              <MappingFragment StoreEntitySet="CLIENTES">
-                <ScalarProperty Name="Cl" ColumnName="Cl" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="Correo" ColumnName="Correo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ACCESO_DATOS">
             <EntityTypeMapping TypeName="EJEMPLO1Model.ACCESO_DATOS">
               <MappingFragment StoreEntitySet="ACCESO_DATOS">
@@ -257,32 +226,31 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_insertar_clientes" FunctionName="EJEMPLO1Model.Store.sp_insertar_clientes" >
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="EJEMPLO1Model.sp_insertar_clientes_Result">
-                <ScalarProperty Name="Respuesta" ColumnName="Respuesta" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <EntitySetMapping Name="PRODUCTO">
-            <EntityTypeMapping TypeName="EJEMPLO1Model.PRODUCTO">
-              <MappingFragment StoreEntitySet="PRODUCTO">
-                <ScalarProperty Name="CodigoProducto" ColumnName="CodigoProducto" />
-                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
-                <ScalarProperty Name="Precio" ColumnName="Precio" />
-                <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+          <EntitySetMapping Name="CLIENTES">
+            <EntityTypeMapping TypeName="EJEMPLO1Model.CLIENTES">
+              <MappingFragment StoreEntitySet="CLIENTES">
+                <ScalarProperty Name="Cl" ColumnName="Cl" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_inserta_productos" FunctionName="EJEMPLO1Model.Store.sp_inserta_productos" >
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="EJEMPLO1Model.sp_inserta_productos_Result">
-                <ScalarProperty Name="Respuesta" ColumnName="Respuesta" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
+          <EntitySetMapping Name="PRODUCTO">
+            <EntityTypeMapping TypeName="EJEMPLO1Model.PRODUCTO">
+              <MappingFragment StoreEntitySet="PRODUCTO">
+                <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="CodigoProducto" ColumnName="CodigoProducto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_actualizar_clientes" FunctionName="EJEMPLO1Model.Store.sp_actualizar_clientes" />
           <FunctionImportMapping FunctionImportName="sp_buscar_cliente" FunctionName="EJEMPLO1Model.Store.sp_buscar_cliente">
-          <ResultMapping>
+            <ResultMapping>
               <ComplexTypeMapping TypeName="EJEMPLO1Model.sp_buscar_cliente_Result">
                 <ScalarProperty Name="Cl" ColumnName="Cl" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -293,20 +261,27 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_actualizar_clientes" FunctionName="EJEMPLO1Model.Store.sp_actualizar_clientes" />
-          <FunctionImportMapping FunctionImportName="sp_actualizar_producto" FunctionName="EJEMPLO1Model.Store.sp_actualizar_producto" />
-          <FunctionImportMapping FunctionImportName="sp_listado_clientes" FunctionName="EJEMPLO1Model.Store.sp_listado_clientes">
+          <FunctionImportMapping FunctionImportName="sp_eliminar_cliente" FunctionName="EJEMPLO1Model.Store.sp_eliminar_cliente" />
+          <FunctionImportMapping FunctionImportName="sp_inserta_productos" FunctionName="EJEMPLO1Model.Store.sp_inserta_productos" />
+          <FunctionImportMapping FunctionImportName="sp_insertar_clientes" FunctionName="EJEMPLO1Model.Store.sp_insertar_clientes" >
             <ResultMapping>
-              <ComplexTypeMapping TypeName="EJEMPLO1Model.sp_listado_clientes_Result">
-                <ScalarProperty Name="Cl" ColumnName="Cl" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="Correo" ColumnName="Correo" />
+              <ComplexTypeMapping TypeName="EJEMPLO1Model.sp_insertar_clientes_Result">
+                <ScalarProperty Name="Respuesta" ColumnName="Respuesta" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_listado_productos" FunctionName="EJEMPLO1Model.Store.sp_listado_productos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EJEMPLO1Model.sp_listado_productos_Result">
+                <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="CodigoProducto" ColumnName="CodigoProducto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_actualizar_producto" FunctionName="EJEMPLO1Model.Store.sp_actualizar_producto" />
+          <FunctionImportMapping FunctionImportName="sp_eliminar_producto" FunctionName="EJEMPLO1Model.Store.sp_eliminar_producto" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

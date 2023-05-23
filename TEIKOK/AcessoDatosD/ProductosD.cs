@@ -21,7 +21,7 @@ namespace AcessoDatosD
             {
                 using (EJEMPLO1Entities context = new AcessoDatosD.EJEMPLO1Entities())
                 {
-                    var sp = context.sp_inserta_productos(strNombreProducto, @decPrecio, @intCategoria);
+                    var sp = context.sp_inserta_productos(@strNombreProducto, @decPrecio, @intCategoria);
                     foreach (var item in sp)
                     {
                         respuesta = item.Respuesta;
@@ -65,7 +65,7 @@ namespace AcessoDatosD
             List<ListadoProductosE> Doc = new List<ListadoProductosE>();
             using (EJEMPLO1Entities context = new AcessoDatosD.EJEMPLO1Entities())
             {
-                var sp = context.sp_buscar_productos(strFiltro);
+                var sp = context.sp_listado_productos(@strFiltro);
                 foreach (var item in sp)
                 {
                     ListadoProductosE doc = new ListadoProductosE();
@@ -79,6 +79,28 @@ namespace AcessoDatosD
                 }
             }
             return Doc;
+        }
+
+        public bool? EliminarProductos(String @strNombreProducto)
+        {
+            bool? respuesta = false;
+            try
+            {
+                using (EJEMPLO1Entities context = new AcessoDatosD.EJEMPLO1Entities())
+                {
+                    var sp = context.sp_eliminar_producto(strNombreProducto);
+                    foreach (var item in sp)
+                    {
+                        respuesta = item.Value;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+            return respuesta;
         }
     }
 }

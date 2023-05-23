@@ -1,18 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="EJEMPLO1ModelStoreContainer" CdmEntityContainer="EJEMPLO1Entities">
-    <EntitySetMapping Name="CLIENTES">
-      <EntityTypeMapping TypeName="EJEMPLO1Model.CLIENTES">
-        <MappingFragment StoreEntitySet="CLIENTES">
-          <ScalarProperty Name="Cl" ColumnName="Cl" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-          <ScalarProperty Name="Correo" ColumnName="Correo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="ACCESO_DATOS">
       <EntityTypeMapping TypeName="EJEMPLO1Model.ACCESO_DATOS">
         <MappingFragment StoreEntitySet="ACCESO_DATOS">
@@ -25,30 +13,29 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="sp_insertar_clientes" FunctionName="EJEMPLO1Model.Store.sp_insertar_clientes">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="EJEMPLO1Model.sp_insertar_clientes_Result">
-          <ScalarProperty Name="Respuesta" ColumnName="Respuesta" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <EntitySetMapping Name="PRODUCTO">
-      <EntityTypeMapping TypeName="EJEMPLO1Model.PRODUCTO">
-        <MappingFragment StoreEntitySet="PRODUCTO">
-          <ScalarProperty Name="CodigoProducto" ColumnName="CodigoProducto" />
-          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
-          <ScalarProperty Name="Precio" ColumnName="Precio" />
-          <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+    <EntitySetMapping Name="CLIENTES">
+      <EntityTypeMapping TypeName="EJEMPLO1Model.CLIENTES">
+        <MappingFragment StoreEntitySet="CLIENTES">
+          <ScalarProperty Name="Cl" ColumnName="Cl" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="sp_inserta_productos" FunctionName="EJEMPLO1Model.Store.sp_inserta_productos">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="EJEMPLO1Model.sp_inserta_productos_Result">
-          <ScalarProperty Name="Respuesta" ColumnName="Respuesta" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
+    <EntitySetMapping Name="PRODUCTO">
+      <EntityTypeMapping TypeName="EJEMPLO1Model.PRODUCTO">
+        <MappingFragment StoreEntitySet="PRODUCTO">
+          <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="CodigoProducto" ColumnName="CodigoProducto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_actualizar_clientes" FunctionName="EJEMPLO1Model.Store.sp_actualizar_clientes" />
     <FunctionImportMapping FunctionImportName="sp_buscar_cliente" FunctionName="EJEMPLO1Model.Store.sp_buscar_cliente">
       <ResultMapping>
         <ComplexTypeMapping TypeName="EJEMPLO1Model.sp_buscar_cliente_Result">
@@ -61,7 +48,26 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_actualizar_clientes" FunctionName="EJEMPLO1Model.Store.sp_actualizar_clientes" />
+    <FunctionImportMapping FunctionImportName="sp_eliminar_cliente" FunctionName="EJEMPLO1Model.Store.sp_eliminar_cliente" />
+    <FunctionImportMapping FunctionImportName="sp_inserta_productos" FunctionName="EJEMPLO1Model.Store.sp_inserta_productos" />
+    <FunctionImportMapping FunctionImportName="sp_insertar_clientes" FunctionName="EJEMPLO1Model.Store.sp_insertar_clientes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EJEMPLO1Model.sp_insertar_clientes_Result">
+          <ScalarProperty Name="Respuesta" ColumnName="Respuesta" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_listado_productos" FunctionName="EJEMPLO1Model.Store.sp_listado_productos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EJEMPLO1Model.sp_listado_productos_Result">
+          <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="CodigoProducto" ColumnName="CodigoProducto" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_actualizar_producto" FunctionName="EJEMPLO1Model.Store.sp_actualizar_producto" />
+    <FunctionImportMapping FunctionImportName="sp_eliminar_producto" FunctionName="EJEMPLO1Model.Store.sp_eliminar_producto" />
   </EntityContainerMapping>
 </Mapping>
