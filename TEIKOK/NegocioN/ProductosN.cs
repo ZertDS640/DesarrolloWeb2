@@ -29,10 +29,20 @@ namespace NegocioN
             return ProductosD.ActualizarProducto(strNombreProducto, decPrecio, intCategoria);
         }
 
-        public List<ListadoProductosE> listadoProductos(string @strFiltro)
+        public List<ListadoProductosE> ListadoProductos(string @strFiltro)
         {
             ProductosD = new ProductosD();
             return ProductosD.ListadoProductos(strFiltro);
+        }
+
+        public bool? EliminarProductos(String @strNombreProducto)
+        {
+            ProductosD = new ProductosD();
+
+
+            return ProductosD.EliminarProductos(strNombreProducto);
+
+
         }
 
     }

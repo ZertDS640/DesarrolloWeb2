@@ -38,5 +38,15 @@ namespace NegocioN
             ClientesD = new ClientesD();
             return ClientesD.ListadoClientes(strFiltro);
         }
+
+        public bool? EliminarClientes(String @strCedula)
+        {
+            ClientesD = new ClientesD();
+
+
+            return ClientesD.EliminarClientes(strCedula);
+
+
+        }
     }
 }
